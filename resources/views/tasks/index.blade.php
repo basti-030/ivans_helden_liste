@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    <p class="title">{{ __('Projects') }}</p>
+    {{ __('Tasks') }}
+@endsection
+
+@section('headline')
+    {{ __('Table') }}
 @endsection
 
 @section('content')
