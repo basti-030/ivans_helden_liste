@@ -46,7 +46,7 @@
             <tbody>
             @for($i=0;$i<10;$i++)
                 <tr>
-                    <td name="aufgabe">Hallo</td>
+                    <td name="aufgaben">Hallo</td>
                     <td name="deadline">Hallo</td>
                     <td name="short-decription">Hallo</td>
                     <td name="plan-stunden">Hallo</td>
