@@ -52,7 +52,11 @@
                     <td name="ENDate">Hallo</td>
                     <td name="p-kuerzel">Hallo</td>
                     <td name="P-Kuerzel-Nr">Hallo</td>
-                    <td name="abgerechnet">Hallo</td>
+                    <td <div>
+                        <input type="checkbox" id="checkbox" name="abgerechnet"
+                               >
+                        <label for="scales">Abgerechnet</label>
+                    </div></td>
                     <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
                 </tr>
             @endfor
