@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/tasks', function () {
+    return view('/tasks.index');
+});
+
+Route::get('/edit', function () {
+    return view('/tasks/shortcut');
+});
 
 Route::get('/tasks', function () {
     return view('tasks.index');
