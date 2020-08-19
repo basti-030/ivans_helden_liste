@@ -13,15 +13,9 @@
         <select>
             <option></option>
         </select>
-        <form method="post" action="">
-            <button>GO TO</button>
-        </form>
-        <form method="post" action="">
-            <button>NEW P-KÜRZEL</button>
-        </form>
-        <form method="post" action="">
-            <button>SYNC MONTH</button>
-        </form>
+        <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
+        <a class="btn btn-info" href="{{url("/")}}">NEW P-Kürzel</a>
+        <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
@@ -59,7 +53,7 @@
                     <td name="p-kuerzel">Hallo</td>
                     <td name="P-Kuerzel-Nr">Hallo</td>
                     <td name="abgerechnet">Hallo</td>
-                    <td name="bearbeiten"><a href="/edit">edit</a></td>
+                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
                 </tr>
             @endfor
             </tbody>
