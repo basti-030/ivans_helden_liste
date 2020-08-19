@@ -11,8 +11,9 @@
     <input type="text"  id="e" name="etext" value="Test edit">
     <input type="submit" name="edit" value="Absenden"><br><br>
     <label for="d">delete PKürzel:</label><br>
-    <input type="text"  id="d" readonly name="dtext" value="Test delete">
+    <input type="text" id="d" readonly name="dtext" value="Test delete">
     <input type="hidden" value="1" name="Test hidden id">
-    <input type="submit" name="delete" value="Löschen">
+    <input type="submit" class="btn btn-danger" name="delete" value="Löschen">
 </form>
+    <button class="btn btn-primary"><a href="/task">back to origin</a></button>
 @endsection
