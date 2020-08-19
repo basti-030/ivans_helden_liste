@@ -11,17 +11,22 @@
 @section('content')
     <div>aktueller Monat
         <select>
-            <option></option>
+            <option value="1">Januar</option>
+            <option value="1">Februar</option>
+            <option value="1">März</option>
+            <option value="1">April</option>
+            <option value="1">Mai</option>
+            <option value="1">Juni</option>
+            <option value="1">Juli</option>
+            <option value="1">August</option>
+            <option value="1">September</option>
+            <option value="1">Oktober</option>
+            <option value="1">November</option>
+            <option value="1">Dezember</option>
         </select>
-        <form method="post" action="">
-            <button>GO TO</button>
-        </form>
-        <form method="post" action="">
-            <button>NEW P-KÜRZEL</button>
-        </form>
-        <form method="post" action="">
-            <button>SYNC MONTH</button>
-        </form>
+        <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
+        <a class="btn btn-info" href="{{url("/edit")}}">NEW P-Kürzel</a>
+        <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
@@ -58,8 +63,13 @@
                     <td name="ENDate">Hallo</td>
                     <td name="p-kuerzel">Hallo</td>
                     <td name="P-Kuerzel-Nr">Hallo</td>
-                    <td name="abgerechnet">Hallo</td>
-                    <td name="bearbeiten"><a href="/edit">edit</a></td>
+                    <td
+                    <div>
+                        <input type="checkbox" id="checkbox" name="abgerechnet">
+                        <label for="scales">Abgerechnet</label>
+                    </div>
+                    </td>
+                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
                 </tr>
             @endfor
             </tbody>
