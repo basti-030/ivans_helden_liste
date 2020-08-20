@@ -26,28 +26,28 @@
             <option value="1">Dezember</option>
         </select>
         <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
-        <a class="btn btn-info" href="{{url("/edit")}}">NEW P-Kürzel</a>
+        <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
         <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
-            <tr>
-                <th>Aufgabe</th>
-                <th>Deadline</th>
-                <th>short Description</th>
-                <th>Plan Stunden</th>
-                <th>Ist Stunden</th>
-                <th>Mitarbeiter</th>
-                <th>Tester</th>
-                <th>Status</th>
-                <th>Fortschritt</th>
-                <th>ENDate</th>
-                <th>P-Kürzel</th>
-                <th>P-Kürzel-Nr</th>
-                <th>Abgerechnet</th>
-                <th>Bearbeiten</th>
-            </tr>
+                <tr>
+                    <th>Aufgabe</th>
+                    <th>Deadline</th>
+                    <th>short Description</th>
+                    <th>Plan Stunden</th>
+                    <th>Ist Stunden</th>
+                    <th>Mitarbeiter</th>
+                    <th>Tester</th>
+                    <th>Status</th>
+                    <th>Fortschritt</th>
+                    <th>ENDate</th>
+                    <th>P-Kürzel</th>
+                    <th>P-Kürzel-Nr</th>
+                    <th>Abgerechnet</th>
+                    <th>Bearbeiten</th>
+                </tr>
             </thead>
             <tbody>
             {{--@for($i=0;$i<10;$i++)--}}
@@ -65,13 +65,15 @@
                     <td name="ENDate">{{$dbindexdata->EnDate}}</td>
                     <td name="p-kuerzel">{{$dbindexdata->pId}}</td>
                     <td name="P-Kuerzel-Nr">{{$dbindexdata->pIdNr}}</td>
-                    <td
-                    <div>
+                    <td>
+
                         <input type="checkbox" id="checkbox" name="abgerechnet">
                         <label for="scales">{{$dbindexdata->KvaId}}</label>
-                    </div>
+
                     </td>
-                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
+                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit/id/{{$dbindexdata->id}}">edit</a>
+                        <a class="btn btn-danger" href="/delete/id/{{$dbindexdata->id}}">delete</a>
+                    </td>
                 </tr>
             @endforeach
             {{--@endfor--}}

@@ -19,12 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-/*Route::get('/tasks', function () {
-    return view('/tasks.index');
-});*/
 
-Route::get('/edit', function () {
-    return view('/tasks/shortcut');
-});
-Route::get('/dbfill', 'DBgetter@getData');
-Route::get('/tasks', 'DBgetter@getData');
+//Route::get('/dbfill', 'DBgetter@getData');
+
+//Route::get('/tasks', 'DBgetter@getData');
+Route::match(['get', 'post'], "/tasks", "DBgetter@getData")->name('index');
+
+Route::match(['post'], "/tasks", "DatabaseCheck@editData");
+Route::match(['get', 'post'], "/edit", "DatabaseCheck@editData")->name('edit');
+Route::get('/edit/id/{id}', "DatabaseCheck@editData");
+
+Route::match(['get', 'post'], "/new", "DatabaseCheck@newData");
+Route::get('/new', "DatabaseCheck@newData");
+
+Route::match(['get', 'post'], "/delete", "DatabaseCheck@deleteData");
+Route::get('/delete/id/{id}', "DatabaseCheck@deleteData");
+
