@@ -25,7 +25,7 @@
             <option value="1">Dezember</option>
         </select>
         <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
-        <a class="btn btn-info" href="{{url("/edit")}}">NEW P-Kürzel</a>
+        <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
         <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     </div>
     <div class="table-responsive">
@@ -66,9 +66,10 @@
                     <td>
                         <input type="checkbox" id="checkbox" name="abgerechnet">
                         <label for="scales">Abgerechnet</label>
-
                     </td>
-                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
+                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit/id/{{$i}}">edit</a>
+                        <a class="btn btn-danger" href="/delete/id/{{$i}}">delete</a>
+                    </td>
                 </tr>
             @endfor
             </tbody>
