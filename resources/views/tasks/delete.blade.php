@@ -8,5 +8,5 @@
     <input type="text" id="d" readonly name="dtext" value="test_delete">
     <input type="hidden" value="1" name="test_hidden_id">
     <input type="submit" class="btn btn-danger" name="delete" value="Löschen">
-    <button class="btn btn-primary"><a href="/task">back to origin</a></button>
+    <a href="/tasks" class="btn btn-info">back to origin</a>
 </form>

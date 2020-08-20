@@ -9,5 +9,5 @@
         <input type="hidden" value="" name="test_hidden_id">
         <input type="submit" name="new" value="Anlegen"><br>
     </form>
-    <button class="btn btn-primary"><a href="/task">back to origin</a></button>
+    <a href="/tasks" class="btn btn-info">back to origin</a>
 @endsection

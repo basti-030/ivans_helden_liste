@@ -9,5 +9,5 @@
     <input type="hidden" value="{{$status['data']->id}}" name="test_hidden_id">
     <input type="submit" name="edit" value="Absenden"><br><br>
 </form>
-<button class="btn btn-primary"><a href="/tasks">back to origin</a></button>
+<a href="/tasks" class="btn btn-info">back to origin</a>
 @endsection
