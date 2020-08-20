@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
     <div>aktueller Monat
         <select>
             <option value="1">Januar</option>
@@ -31,47 +32,49 @@
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
-                <tr>
+            <tr>
                 <th>Aufgabe</th>
-                    <th>Deadline</th>
-                    <th>short Description</th>
-                    <th>Plan Stunden</th>
-                    <th>Ist Stunden</th>
-                    <th>Mitarbeiter</th>
-                    <th>Tester</th>
-                    <th>Status</th>
-                    <th>Fortschritt</th>
-                    <th>ENDate</th>
-                    <th>P-Kürzel</th>
-                    <th>P-Kürzel-Nr</th>
-                    <th>Abgerechnet</th>
-                    <th>Bearbeiten</th>
-                </tr>
+                <th>Deadline</th>
+                <th>short Description</th>
+                <th>Plan Stunden</th>
+                <th>Ist Stunden</th>
+                <th>Mitarbeiter</th>
+                <th>Tester</th>
+                <th>Status</th>
+                <th>Fortschritt</th>
+                <th>ENDate</th>
+                <th>P-Kürzel</th>
+                <th>P-Kürzel-Nr</th>
+                <th>Abgerechnet</th>
+                <th>Bearbeiten</th>
+            </tr>
             </thead>
             <tbody>
-            @for($i=0;$i<10;$i++)
+            {{--@for($i=0;$i<10;$i++)--}}
+            @foreach($dbdata as $dbindexdata)
                 <tr>
-                    <td name="aufgaben">Hallo</td>
-                    <td name="deadline">Hallo</td>
-                    <td name="short-decription">Hallo</td>
-                    <td name="plan-stunden">Hallo</td>
-                    <td name="ist-stunden">Hallo</td>
-                    <td name="mitarbeiter">Hallo</td>
-                    <td name="tester">Hallo</td>
-                    <td name="status">Hallo</td>
-                    <td name="fortschritt">Hallo</td>
-                    <td name="ENDate">Hallo</td>
-                    <td name="p-kuerzel">Hallo</td>
-                    <td name="P-Kuerzel-Nr">Hallo</td>
+                    <td name="aufgaben">{{$dbindexdata->task}}</td>
+                    <td name="deadline">{{$dbindexdata->deadline}}</td>
+                    <td name="short-decription">{{$dbindexdata->shortDescription}}</td>
+                    <td name="plan-stunden">{{$dbindexdata->estHour}}</td>
+                    <td name="ist-stunden">{{$dbindexdata->totalHour}}</td>
+                    <td name="mitarbeiter">{{$dbindexdata->developer}}</td>
+                    <td name="tester">{{$dbindexdata->tester}}</td>
+                    <td name="status">{{$dbindexdata->status}}</td>
+                    <td name="fortschritt">{{$dbindexdata->progress}}</td>
+                    <td name="ENDate">{{$dbindexdata->EnDate}}</td>
+                    <td name="p-kuerzel">{{$dbindexdata->pId}}</td>
+                    <td name="P-Kuerzel-Nr">{{$dbindexdata->pIdNr}}</td>
                     <td
                     <div>
                         <input type="checkbox" id="checkbox" name="abgerechnet">
-                        <label for="scales">Abgerechnet</label>
+                        <label for="scales">{{$dbindexdata->KvaId}}</label>
                     </div>
                     </td>
                     <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
                 </tr>
-            @endfor
+            @endforeach
+            {{--@endfor--}}
             </tbody>
         </table>
     </div>

@@ -15,5 +15,5 @@
     <input type="hidden" value="1" name="Test hidden id">
     <input type="submit" class="btn btn-danger" name="delete" value="Löschen">
 </form>
-    <button class="btn btn-primary"><a href="/task">back to origin</a></button>
+    <a href="/tasks" class="btn btn-info">back to origin</a>
 @endsection
