@@ -32,7 +32,7 @@
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                <th>Aufgabe</th>
+                    <th>Aufgabe</th>
                     <th>Deadline</th>
                     <th>short Description</th>
                     <th>Plan Stunden</th>
@@ -63,11 +63,10 @@
                     <td name="ENDate">Hallo</td>
                     <td name="p-kuerzel">Hallo</td>
                     <td name="P-Kuerzel-Nr">Hallo</td>
-                    <td
-                    <div>
+                    <td>
                         <input type="checkbox" id="checkbox" name="abgerechnet">
                         <label for="scales">Abgerechnet</label>
-                    </div>
+
                     </td>
                     <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
                 </tr>
