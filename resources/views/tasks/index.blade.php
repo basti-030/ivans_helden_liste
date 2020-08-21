@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{--- Adresse: http://127.0.0.1:8000/tasks -----}}
 
 @section('pagetitle')
     {{ __('Tasks') }}
@@ -32,25 +33,24 @@
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
-                <tr>
-                    <th>Aufgabe</th>
-                    <th>Deadline</th>
-                    <th>short Description</th>
-                    <th>Plan Stunden</th>
-                    <th>Ist Stunden</th>
-                    <th>Mitarbeiter</th>
-                    <th>Tester</th>
-                    <th>Status</th>
-                    <th>Fortschritt</th>
-                    <th>ENDate</th>
-                    <th>P-Kürzel</th>
-                    <th>P-Kürzel-Nr</th>
-                    <th>Abgerechnet</th>
-                    <th>Bearbeiten</th>
-                </tr>
+            <tr>
+                <th>Aufgabe</th>
+                <th>Deadline</th>
+                <th>short Description</th>
+                <th>Plan Stunden</th>
+                <th>Ist Stunden</th>
+                <th>Mitarbeiter</th>
+                <th>Tester</th>
+                <th>Status</th>
+                <th>Fortschritt</th>
+                <th>ENDate</th>
+                <th>P-Kürzel</th>
+                <th>P-Kürzel-Nr</th>
+                <th>Abgerechnet</th>
+                <th>Bearbeiten</th>
+            </tr>
             </thead>
             <tbody>
-            {{--@for($i=0;$i<10;$i++)--}}
             @foreach($dbdata as $dbindexdata)
                 <tr>
                     <td name="aufgaben">{{$dbindexdata->task}}</td>
@@ -76,7 +76,6 @@
                     </td>
                 </tr>
             @endforeach
-            {{--@endfor--}}
             </tbody>
         </table>
     </div>

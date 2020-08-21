@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 
 class DatabaseCheck extends Controller
 {
-
+/*########### Edit Function ###########*/
     public function editData(Request $request, $id=false)
     {
         if($id)
@@ -26,7 +26,7 @@ class DatabaseCheck extends Controller
         $results = \App\projectTask::all();
         return redirect()->route('index');
     }
-
+/*################# New Function ####################*/
     public function newData(Request $insert)
     {
 
@@ -40,14 +40,22 @@ class DatabaseCheck extends Controller
         return view('tasks.new', ['status' => array('status' => '', 'data' => "")]);
 
     }
-
-    public function deleteData(Request $request)
+/*################ Delete Function ##################*/
+    public function deleteData(Request $request, $id = false)
     {
-        if($request->id)
+        if($id)
         {
-            $delete = \App\projectTask::find($request->id);
+            $delete = \App\projectTask::find($id);
+            return view('tasks.delete', ['status' => array('status' => '', 'data' => $delete)]);
+
+        }
+        //if($request->id)
+        if ($request->input('delete'))
+        {
+            $delete = \App\projectTask::find($request->input('test_hidden_id'));
+            $delete->pIdNr =$request->input('dtext');
             $delete->delete();
         }
-        return redirect()->route('edit');
+        return redirect()->route('index');
     }
 }
