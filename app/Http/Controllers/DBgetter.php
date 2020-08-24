@@ -22,16 +22,18 @@ class DBgetter extends Controller
         //dd($request ->Sel_month);
         $selmonth = $request->input('sel_month');
         //dd($selmonth);
-        if ($request->input('to_month')) {
+
+    if ($selmonth == '00') {
+            echo "Hallo OO";
+            $sel_month = \App\projectTask::all();
+            return view('/tasks.index', ['dbdata' => $sel_month]);
+        }
+        elseif ($request->input('to_month')) {
             echo $selmonth;
             $sel_month = \App\projectTask::where('deadline', '>=', date('Y') . '-' . $selmonth . '-01')
                 ->where('deadline', '<', date('Y') . '-' . $selmonth . '-31')
                 ->get();
             //dd($sel_month);
-            return view('/tasks.index', ['dbdata' => $sel_month]);
-        } elseif ($selmonth = '00') {
-            echo "Hallo OO";
-            $sel_month = \App\projectTask::all();
             return view('/tasks.index', ['dbdata' => $sel_month]);
         }
 
