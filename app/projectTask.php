@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class projectTask extends Model
 {
     //
+    //protected $primaryKey = '';
 }

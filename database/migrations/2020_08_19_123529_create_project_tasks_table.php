@@ -15,19 +15,19 @@ class CreateProjectTasksTable extends Migration
     {
         Schema::create('project_tasks', function (Blueprint $table) {
             $table->id();
-            $table->string("task");
-            $table->date("deadline");
-            $table->string("shortDescription");
-            $table->string("estHour");
-            $table->string("totalHour");
-            $table->string("developer");
-            $table->string("tester");
-            $table->string("status");
-            $table->string("progress");
-            $table->date("EnDate");
-            $table->string("pId");
+            $table->string("task")->nullable();
+            $table->date("deadline")->nullable();
+            $table->string("shortDescription")->nullable();
+            $table->string("estHour")->nullable();
+            $table->string("totalHour")->nullable();
+            $table->string("developer")->nullable();
+            $table->string("tester")->nullable();
+            $table->string("status")->nullable();
+            $table->string("progress")->nullable();
+            $table->date("EnDate")->nullable();
+            $table->string("pId")->nullable();
             $table->string("pIdNr");
-            $table->string("KvaId");
+            $table->string("KvaId")->nullable();
             $table->timestamps();
 
 

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{--- Adresse: http://127.0.0.1:8000/tasks -----}}
 
 @section('pagetitle')
     {{ __('Tasks') }}
@@ -9,68 +10,73 @@
 @endsection
 
 @section('content')
-    <div>aktueller Monat
-        <select>
-            <option value="1">Januar</option>
-            <option value="1">Februar</option>
-            <option value="1">März</option>
-            <option value="1">April</option>
-            <option value="1">Mai</option>
-            <option value="1">Juni</option>
-            <option value="1">Juli</option>
-            <option value="1">August</option>
-            <option value="1">September</option>
-            <option value="1">Oktober</option>
-            <option value="1">November</option>
-            <option value="1">Dezember</option>
+
+    <form action="/task" method="get">aktueller Monat
+        <select name="sel_month">
+            <option value="00">alle Monate</option>
+            <option value="01">Januar</option>
+            <option value="02">Februar</option>
+            <option value="03">März</option>
+            <option value="04">April</option>
+            <option value="05">Mai</option>
+            <option value="06">Juni</option>
+            <option value="07">Juli</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Dezember</option>
         </select>
-        <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
-        <a class="btn btn-info" href="{{url("/edit")}}">NEW P-Kürzel</a>
+        <input type="submit" name="to_month" class="btn btn-info" value="GO TO"/>
+        <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
         <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
-    </div>
+    </form>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
-                <tr>
-                    <th>Aufgabe</th>
-                    <th>Deadline</th>
-                    <th>short Description</th>
-                    <th>Plan Stunden</th>
-                    <th>Ist Stunden</th>
-                    <th>Mitarbeiter</th>
-                    <th>Tester</th>
-                    <th>Status</th>
-                    <th>Fortschritt</th>
-                    <th>ENDate</th>
-                    <th>P-Kürzel</th>
-                    <th>P-Kürzel-Nr</th>
-                    <th>Abgerechnet</th>
-                    <th>Bearbeiten</th>
-                </tr>
+            <tr>
+                <th>Aufgabe</th>
+                <th>Deadline</th>
+                <th>short Description</th>
+                <th>Plan Stunden</th>
+                <th>Ist Stunden</th>
+                <th>Mitarbeiter</th>
+                <th>Tester</th>
+                <th>Status</th>
+                <th>Fortschritt</th>
+                <th>ENDate</th>
+                <th>P-Kürzel</th>
+                <th>P-Kürzel-Nr</th>
+                <th>Abgerechnet</th>
+                <th>Bearbeiten</th>
+            </tr>
             </thead>
             <tbody>
-            @for($i=0;$i<10;$i++)
+            @foreach($dbdata as $dbindexdata)
                 <tr>
-                    <td name="aufgaben">Hallo</td>
-                    <td name="deadline">Hallo</td>
-                    <td name="short-decription">Hallo</td>
-                    <td name="plan-stunden">Hallo</td>
-                    <td name="ist-stunden">Hallo</td>
-                    <td name="mitarbeiter">Hallo</td>
-                    <td name="tester">Hallo</td>
-                    <td name="status">Hallo</td>
-                    <td name="fortschritt">Hallo</td>
-                    <td name="ENDate">Hallo</td>
-                    <td name="p-kuerzel">Hallo</td>
-                    <td name="P-Kuerzel-Nr">Hallo</td>
+                    <td name="aufgaben">{{$dbindexdata->task}}</td>
+                    <td name="deadline">{{$dbindexdata->deadline}}</td>
+                    <td name="short-decription">{{$dbindexdata->shortDescription}}</td>
+                    <td name="plan-stunden">{{$dbindexdata->estHour}}</td>
+                    <td name="ist-stunden">{{$dbindexdata->totalHour}}</td>
+                    <td name="mitarbeiter">{{$dbindexdata->developer}}</td>
+                    <td name="tester">{{$dbindexdata->tester}}</td>
+                    <td name="status">{{$dbindexdata->status}}</td>
+                    <td name="fortschritt">{{$dbindexdata->progress}}</td>
+                    <td name="ENDate">{{$dbindexdata->EnDate}}</td>
+                    <td name="p-kuerzel">{{$dbindexdata->pId}}</td>
+                    <td name="P-Kuerzel-Nr">{{$dbindexdata->pIdNr}}</td>
                     <td>
+
                         <input type="checkbox" id="checkbox" name="abgerechnet">
-                        <label for="scales">Abgerechnet</label>
+                        <label for="scales">{{$dbindexdata->KvaId}}</label>
 
                     </td>
-                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit">edit</a></td>
+                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit/id/{{$dbindexdata->id}}">edit</a>
+                        <a class="btn btn-danger" href="/delete/id/{{$dbindexdata->id}}">delete</a>
+                    </td>
                 </tr>
-            @endfor
+            @endforeach
             </tbody>
         </table>
     </div>
