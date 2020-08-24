@@ -20,10 +20,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-//Route::get('/dbfill', 'DBgetter@getData');
-
+Route::get('/dbfill', 'DBgetter@selMonth');
+Route::match(['get', 'post'], "/dbfill", "DBgetter@selMonth");
 //Route::get('/tasks', 'DBgetter@getData');
 Route::match(['get', 'post'], "/tasks", "DBgetter@getData")->name('index');
+Route::match(['get', 'post'], "/task", "DBgetter@selMonth");
 
 Route::match(['post'], "/tasks", "DatabaseCheck@editData");
 Route::match(['get', 'post'], "/edit", "DatabaseCheck@editData")->name('edit');

@@ -11,25 +11,26 @@
 
 @section('content')
 
-    <div>aktueller Monat
-        <select>
-            <option value="1">Januar</option>
-            <option value="1">Februar</option>
-            <option value="1">März</option>
-            <option value="1">April</option>
-            <option value="1">Mai</option>
-            <option value="1">Juni</option>
-            <option value="1">Juli</option>
-            <option value="1">August</option>
-            <option value="1">September</option>
-            <option value="1">Oktober</option>
-            <option value="1">November</option>
-            <option value="1">Dezember</option>
+    <form action="/task" method="get">aktueller Monat
+        <select name="sel_month">
+            <option value="00">alle Monate</option>
+            <option value="01">Januar</option>
+            <option value="02">Februar</option>
+            <option value="03">März</option>
+            <option value="04">April</option>
+            <option value="05">Mai</option>
+            <option value="06">Juni</option>
+            <option value="07">Juli</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Dezember</option>
         </select>
-        <a class="btn btn-info" href="{{url("/")}}">GO TO</a>
+        <input type="submit" name="to_month" class="btn btn-info" value="GO TO"/>
         <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
         <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
-    </div>
+    </form>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use function GuzzleHttp\Promise\all;
 
 class DBgetter extends Controller
 {
@@ -11,28 +13,28 @@ class DBgetter extends Controller
     {
         $dbdata = \App\projectTask::all();
         //dd($dbdata);
-        return view('/tasks.index',['dbdata'=>$dbdata]);
+        return view('/tasks.index', ['dbdata' => $dbdata]);
 
-        /*$dbdatacount = count($dbdata);
-        //dd($dbdatacount);
-        for ($ii=0; $ii<$dbdatacount; $ii++){
-            $deadline = $dbdata[$ii]['deadline'];
-            //dd($deadline);
-            return view('tasks.index',['dbdata'=>$dbdata]);
-        }*/
+    }
 
-/*return view('tasks.index',['deadline'=>$deadline]);*/
+    public function selMonth(Request $request, $id = false)
+    {
+        //dd($request ->Sel_month);
+        $selmonth = $request->input('sel_month');
+        //dd($selmonth);
+        if ($request->input('to_month')) {
+            echo $selmonth;
+            $sel_month = \App\projectTask::where('deadline', '>=', date('Y') . '-' . $selmonth . '-01')
+                ->where('deadline', '<', date('Y') . '-' . $selmonth . '-31')
+                ->get();
+            //dd($sel_month);
+            return view('/tasks.index', ['dbdata' => $sel_month]);
+        } elseif ($selmonth = '00') {
+            echo "Hallo OO";
+            $sel_month = \App\projectTask::all();
+            return view('/tasks.index', ['dbdata' => $sel_month]);
+        }
+
+
     }
 }
-/*<td name="aufgaben">Hallo</td>
-                    <td name="deadline">Hallo</td>
-                    <td name="short-decription">Hallo</td>
-                    <td name="plan-stunden">Hallo</td>
-                    <td name="ist-stunden">Hallo</td>
-                    <td name="mitarbeiter">Hallo</td>
-                    <td name="tester">Hallo</td>
-                    <td name="status">Hallo</td>
-                    <td name="fortschritt">Hallo</td>
-                    <td name="ENDate">Hallo</td>
-                    <td name="p-kuerzel">Hallo</td>
-                    <td name="P-Kuerzel-Nr">Hallo</td>*/
