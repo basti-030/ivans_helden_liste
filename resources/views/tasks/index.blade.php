@@ -13,19 +13,45 @@
 
     <form action="/task" method="get">aktueller Monat
         <select name="sel_month">
-            <option value="00">alle Monate</option>
-            <option value="01">Januar</option>
-            <option value="02">Februar</option>
-            <option value="03">März</option>
-            <option value="04">April</option>
-            <option value="05">Mai</option>
-            <option value="06">Juni</option>
-            <option value="07">Juli</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">Oktober</option>
-            <option value="11">November</option>
-            <option value="12">Dezember</option>
+            <option value="00" {{$status['selectedM']==
+            '00'?'selected':''}}>alle Monate
+            </option>
+            <option value="01" {{$status['selectedM']==
+            '01'?'selected':''}}>Januar
+            </option>
+            <option value="02" {{$status['selectedM']==
+            '02'?'selected':''}}>Februar
+            </option>
+            <option value="03" {{$status['selectedM']==
+            '03'?'selected':''}}>März
+            </option>
+            <option value="04" {{$status['selectedM']==
+            '04'?'selected':''}}>April
+            </option>
+            <option value="05" {{$status['selectedM']==
+            '05'?'selected':''}}>Mai
+            </option>
+            <option value="06" {{$status['selectedM']==
+            '06'?'selected':''}}>Juni
+            </option>
+            <option value="07" {{$status['selectedM']==
+            '07'?'selected':''}}>Juli
+            </option>
+            <option value="08" {{$status['selectedM']==
+            '08'?'selected':''}}>August
+            </option>
+            <option value="09" {{$status['selectedM']==
+            '09'?'selected':''}}>September
+            </option>
+            <option value="10" {{$status['selectedM']==
+            '10'?'selected':''}}>Oktober
+            </option>
+            <option value="11" {{$status['selectedM']==
+            '11'?'selected':''}}>November
+            </option>
+            <option value="12" {{$status['selectedM']==
+            '12'?'selected':''}}>Dezember
+            </option>
         </select>
         <input type="submit" name="to_month" class="btn btn-info" value="GO TO"/>
         <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
@@ -52,7 +78,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($dbdata as $dbindexdata)
+            @foreach($status['dbdata'] as $dbindexdata)
                 <tr>
                     <td name="aufgaben">{{$dbindexdata->task}}</td>
                     <td name="deadline">{{$dbindexdata->deadline}}</td>
