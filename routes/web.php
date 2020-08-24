@@ -27,10 +27,6 @@ Route::get('/edit', function () {
     return view('/tasks/shortcut');
 });
 
-Route::get('/tasks', function () {
-    return view('tasks.index');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
