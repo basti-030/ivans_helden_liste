@@ -54,9 +54,9 @@
             </option>
         </select>
         <input type="submit" name="to_month" class="btn btn-info" value="GO TO"/>
-        <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
-        <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     </form>
+    <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
+    <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
@@ -98,8 +98,16 @@
                         <label for="scales">{{$dbindexdata->KvaId}}</label>
 
                     </td>
-                    <td name="bearbeiten"><a class="btn btn-primary" href="/edit/id/{{$dbindexdata->id}}">edit</a>
-                        <a class="btn btn-danger" href="/delete/id/{{$dbindexdata->id}}">delete</a>
+                    <td name="bearbeiten">
+                        <a class="btn btn-primary btn-sm" href="/edit/id/{{$dbindexdata->id}}">edit</a>
+
+                        <form method="get" type="hidden" action="/dbsync">
+                            @csrf
+                            <input type="hidden" value="{{$dbindexdata->id}}" name="sync_hidden_id">
+                            <input type="submit" name="sync" value="sync" class="btn btn-info">
+                        </form>
+
+                        <a class="btn btn-danger btn-sm" href="/delete/id/{{$dbindexdata->id}}">delete</a>
                     </td>
                 </tr>
             @endforeach

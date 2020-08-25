@@ -18,7 +18,6 @@ class DatabaseCheck extends Controller
 
         if($request->input('edit'))
         {
-
             $editWorker = \App\projectTask::find($request->input('test_hidden_id'));
             $editWorker->pIdNr =$request->input('etext');
             $editWorker->save();

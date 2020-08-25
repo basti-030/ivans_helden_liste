@@ -26,6 +26,8 @@ Route::match(['get', 'post'], "/dbfill", "DBgetter@selMonth");
 Route::match(['get', 'post'], "/tasks", "DBgetter@getData")->name('index');
 Route::match(['get', 'post'], "/task", "DBgetter@selMonth");
 
+Route::match(['get', 'post'], "/dbsync", "DBgetter@dbSync");
+
 Route::match(['post'], "/tasks", "DatabaseCheck@editData");
 Route::match(['get', 'post'], "/edit", "DatabaseCheck@editData")->name('edit');
 Route::get('/edit/id/{id}', "DatabaseCheck@editData");
