@@ -103,7 +103,7 @@
 
                         <form method="get" type="hidden" action="/dbsync">
                             @csrf
-                            <input type="hidden" value="{{$dbindexdata->id}}" name="sync_hidden_id">
+                            <input type="hidden" value="{{$dbindexdata->pIdNr}}" name="sync_hidden_id">
                             <input type="submit" name="sync" value="sync" class="btn btn-info">
                         </form>
 
