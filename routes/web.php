@@ -28,6 +28,8 @@ Route::match(['get', 'post'], "/task", "DBgetter@selMonth");
 
 Route::match(['get', 'post'], "/dbsync", "DBgetter@dbSync");
 
+Route::match(['get', 'post'], "/dbsyncall", "DBgetter@dbSyncAll");
+
 Route::match(['post'], "/tasks", "DatabaseCheck@editData");
 Route::match(['get', 'post'], "/edit", "DatabaseCheck@editData")->name('edit');
 Route::get('/edit/id/{id}', "DatabaseCheck@editData");

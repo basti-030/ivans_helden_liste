@@ -56,7 +56,13 @@
         <input type="submit" name="to_month" class="btn btn-info" value="GO TO"/>
     </form>
     <a class="btn btn-info" href="{{url("/new")}}">NEW P-Kürzel</a>
-    <a class="btn btn-info" href="{{url("/")}}">SYNC MONTH</a>
+
+    <form method="get" type="hidden" action="/dbsyncall">
+        @csrf
+        <input type="hidden" value="{{$status['selectedM']}}" name="syncall_hidden_month_id">
+        <input type="submit" name="sync" value="SYNC MONTH" class="btn btn-info">
+    </form>
+
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
