@@ -25,7 +25,6 @@ class DBgetter extends Controller
             $sel_month = \App\projectTask::all();
             return view('/tasks.index', ['status' => array('dbdata' => $sel_month, 'selectedM' => $selmonth)]);
         } elseif ($request->input('to_month')) {
-            //echo $selmonth;
             $sel_month = \App\projectTask::where('deadline', '>=', date('Y') . '-' . $selmonth . '-01')
                 ->where('deadline', '<=', date('Y') . '-' . $selmonth . '-31')
                 ->get();
@@ -38,10 +37,15 @@ class DBgetter extends Controller
     {
         $response = Http::withHeaders([
             "Content-Type" => "application/json",
-            "Authorization" => "Basic Y29kZUB6ZW50cmFsd2ViLmRlOm1qaFVrRjlTNmRjdnhpRGxveGhCRkMwMQ=="
-        ])->get('https://zentralweb.atlassian.net/rest/agile/1.0/issue/' . $searchPIDNr);
+// ------------ das env() verweist auf die .env dort liegt der Key
+            "Authorization" => env('JIRA_AUTHORISATION', false)
+// ------------ der Pfad liegt in .env
+        ])->get(env('JIRA_URL', false) . $searchPIDNr);
         $json = json_encode($response->json());
+        //echo $json;
+        //dd();
         return $jsondata = json_decode($json, true);
+
     }
 
 // ----------- befüllt die Datenbank mit den Daten aus dem $jsondate (Auswahl nach Monaten weiter unten --------------
@@ -102,7 +106,7 @@ class DBgetter extends Controller
 
     public function dbSyncAll(Request $request, $id = false)
     {
-        // in der Index.blade (62) wird der ausgewählte Monat übergeben und hier als $selmonth abgefragt
+// --------- in der Index.blade (62) wird der ausgewählte Monat übergeben und hier als $selmonth abgefragt
         $selmonth = $request->input('syncall_hidden_month_id');
 
 // - etweder sind alle Monate ausgewählt (00 oder null) oder "else" ein bestimmter Monat -----------------------------

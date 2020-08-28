@@ -34,7 +34,7 @@ Route::match(['post'], "/tasks", "DatabaseCheck@editData");
 Route::match(['get', 'post'], "/edit", "DatabaseCheck@editData")->name('edit');
 Route::get('/edit/id/{id}', "DatabaseCheck@editData");
 
-Route::match(['get', 'post'], "/new", "DatabaseCheck@newData");
+Route::match(['get', 'post'], "/new", "DatabaseCheck@newData")->name('new');
 Route::get('/new', "DatabaseCheck@newData");
 
 Route::match(['get', 'post'], "/delete", "DatabaseCheck@deleteData")->name('delete');

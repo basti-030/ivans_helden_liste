@@ -1,58 +1,64 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 class DatabaseCheck extends Controller
 {
-/*########### Edit Function ###########*/
-    public function editData(Request $request, $id=false)
+    /*########### Edit Function ###########*/
+    public function editData(Request $request, $id = false)
     {
-        if($id)
-        {
+        if ($id) {
             $row = \App\projectTask::find($id);
             return view('tasks.edit', ['status' => array('status' => '', 'data' => $row)]);
         }
 
-        if($request->input('edit'))
-        {
+        if ($request->input('edit')) {
             $editWorker = \App\projectTask::find($request->input('test_hidden_id'));
-            $editWorker->pIdNr =$request->input('etext');
-            $editWorker->save();
+            $editWorker->pIdNr = $request->input('etext');
+            try {
+                $editWorker->save();
+            } catch (\Illuminate\Database\QueryException $error) {
+                return back()->withError($error->errorInfo[1])->withInput();
+            }
+            return redirect()->route('index');
         }
-        $results = \App\projectTask::all();
+        //$results = \App\projectTask::all();
         return redirect()->route('index');
     }
-/*################# New Function ####################*/
+
+    /*################# New Function ####################*/
     public function newData(Request $insert)
     {
-
-        if($insert->input('new'))
-        {
+        if ($insert->input('new')) {
             $insertNew = new \App\projectTask();
             $insertNew->pIdNr = $insert->input('ntext');
-            $insertNew->save();
-            return redirect()->route('edit');
+
+            try {
+                $insertNew->save();
+            } catch (\Illuminate\Database\QueryException $error) {
+                return back()->withError($error->errorInfo[1])->withInput();
+            }
+            return redirect()->route('index');
         }
         return view('tasks.new', ['status' => array('status' => '', 'data' => "")]);
-
     }
-/*################ Delete Function ##################*/
+
+    /*################ Delete Function ##################*/
     public function deleteData(Request $request, $id = false)
     {
-        if($id)
-        {
+        if ($id) {
             $delete = \App\projectTask::find($id);
             return view('tasks.delete', ['status' => array('status' => '', 'data' => $delete)]);
 
         }
         //if($request->id)
-        if ($request->input('delete'))
-        {
+        if ($request->input('delete')) {
             $delete = \App\projectTask::find($request->input('test_hidden_id'));
-            $delete->pIdNr =$request->input('dtext');
+            $delete->pIdNr = $request->input('dtext');
             $delete->delete();
         }
         return redirect()->route('index');
